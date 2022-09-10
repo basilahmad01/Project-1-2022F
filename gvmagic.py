@@ -28,8 +28,8 @@ def show_svg(d):
 def run_graphviz(s, layout_engine='dot'):
     """Execute dot with a layout and return a raw SVG image, or None."""
     cmd = ['dot', '-Tsvg', '-K', layout_engine]
-
-    dot = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+    cmd2 = 'dot -Tsvg -K '+ str(layout_engine)
+    dot = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, )
     stdoutdata, stderrdata = dot.communicate(s.encode('utf-8'))
     status = dot.wait()
     if status == 0:
